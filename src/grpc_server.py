@@ -12,20 +12,10 @@ class OpinionAnalyzerServicer(opinion_analyzer_pb2_grpc.OpinionAnalyzerServiceSe
         self.analyzer = analyzer
 
     def AnalyzeOpinion(self, request, context):
-        """
-        Handles the AnalyzeOpinion RPC call.
-
-        Parameters:
-        - request: AnalyzeRequest containing topic_text and opinion_text.
-        - context: gRPC context.
-
-        Returns:
-        - AnalyzeResponse containing analysis_result.
-        """
-        topic = request.topic_text
-        opinion = request.opinion_text
-        logging.info(f"Received gRPC request: Topic='{topic}', Opinion='{opinion}'")
-        result = self.analyzer.analyze_grpc(topic, opinion)
+        topics = request.topics
+        opinions = request.opinions
+        logging.info(f"Received gRPC request: Topics='{topics}', Opinions='{opinions}'")
+        result = self.analyzer.analyze_grpc(topics, opinions)
         return opinion_analyzer_pb2.AnalyzeResponse(analysis_result=result)
 
 class GRPCServer:

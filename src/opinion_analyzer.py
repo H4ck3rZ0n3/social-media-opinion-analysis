@@ -181,9 +181,8 @@ class OpinionAnalyzer:
     def analyze_grpc(self, topics, opinions):
         logging.info("Starting the main process...")
 
-        self.topics_rw = topics.to_pandas().tolist()
-
-        self.opinions_rw = opinions.to_pandas().tolist()
+        self.topics_rw = topics
+        self.opinions_rw = opinions
 
         self.preprocess_data()
         self.batch_process_comments()
@@ -192,11 +191,17 @@ class OpinionAnalyzer:
 
         conclusions = self.conclusion_generator.generate_conclusions(self.classified_comments)
 
-        self.save_opinions_data(self.classified_comments)
-        self.save_conclusions_data(conclusions)
+        opinions_result = [
+            (comment['text'], comment['topic'], comment['type'])
+            for comment in self.classified_comments
+        ]
 
-        # If desired, print conclusions
-        # for topic, effectiveness, topic_summaries in conclusions:
-        #     print(f"Topic: {topic}\nEffectiveness: {effectiveness}\nSummary: {' '.join(topic_summaries)}\n")
+        topics_result = [
+            (topic, summary, effectiveness)
+            for topic, effectiveness, summary_list in conclusions
+            for summary in summary_list
+        ]
 
         logging.info("Process completed.")
+
+        return opinions_result, topics_result

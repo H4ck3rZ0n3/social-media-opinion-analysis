@@ -96,7 +96,7 @@ This system is divided into several components:
 
    - Run the Docker container with GPU access:
      ```bash
-     docker run --gpus all --name social-media-analyzer-container social-media-analyzer-image
+     docker run --gpus all --name social-media-analyzer-container -it social-media-analyzer-image
      ```
 ---
 
