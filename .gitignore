@@ -1,0 +1,4 @@
+.venv
+src/cufile.log
+src/opinion_analyzer_pb2.py
+src/opinion_analyzer_pb2_grpc.py

@@ -57,7 +57,9 @@ class OpinionAnalyzer:
             if save_dir and not os.path.exists(save_dir):
                 os.makedirs(save_dir, exist_ok=True)
 
-            save_path = os.path.join(save_dir, f'/conclusions_{timestamp}.csv')
+            save_path = os.path.join(save_dir, f'conclusions_{timestamp}.csv')
+
+            logging.info(f"Conclusions saving to {save_path}...")
 
             df.to_csv(save_path, index=False)
 
@@ -94,7 +96,9 @@ class OpinionAnalyzer:
             if save_dir and not os.path.exists(save_dir):
                 os.makedirs(save_dir, exist_ok=True)
 
-            save_path = os.path.join(save_dir, f'/opinions_{timestamp}.csv')
+            save_path = os.path.join(save_dir, f'opinions_{timestamp}.csv')
+
+            logging.info(f"Opinions saving to {save_path}...")
 
             df.to_csv(save_path, index=False)
 
