@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package opinion;
+
+service OpinionAnalyzerService {
+    rpc AnalyzeOpinion (AnalyzeRequest) returns (AnalyzeResponse) {}
+}
+
+message AnalyzeRequest {
+    string topic_text = 1;
+    string opinion_text = 2;
+}
+
+message AnalyzeResponse {
+    string analysis_result = 1;
+}

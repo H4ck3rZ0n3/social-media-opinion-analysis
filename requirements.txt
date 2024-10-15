@@ -1,0 +1,8 @@
+--extra-index-url https://pypi.nvidia.com
+cudf-cu12
+datasets
+emoji
+nltk
+sentence_transformers
+grpcio
+grpcio-tools
