@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 # Installing required Python packages
 RUN pip3 install \
     cudf-cu12 --extra-index-url=https://pypi.nvidia.com && \
-    pip3 install datasets emoji nltk sentence_transformers
+    pip3 install datasets emoji nltk sentence_transformers grpcio grpcio-tools
 
 # Copying the data and src folders to the Docker image
 COPY proto/ /app/proto/
@@ -16,10 +16,10 @@ COPY src/ /app/src/
 
 # Building Protobuf files
 RUN python3 -m grpc_tools.protoc \
-    -I./proto \
-    --python_out=./src/ \
-    --grpc_python_out=./src/ \
-    ./proto/opinion_analyzer.proto
+    -I/app/proto \
+    --python_out=/app/src \
+    --grpc_python_out=/app/src \
+    /app/proto/opinion_analyzer.proto
 
 # Setting the working directory
 WORKDIR /app/src/
