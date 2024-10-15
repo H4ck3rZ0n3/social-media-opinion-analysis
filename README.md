@@ -1,7 +1,7 @@
 
 # Social Media Opinion Analysis Project
 
-This project aims to analyze and classify social media comments into specific categories (e.g., Claim, Counterclaim, Rebuttal, Evidence) and generate summaries and effectiveness ratings for topics. The system uses **GPU acceleration** to handle large datasets efficiently and offers both batch processing and real-time analysis through a gRPC server.
+This project aims to analyze and classify social media comments into specific categories (Claim, Counterclaim, Rebuttal, Evidence) and generate summaries and effectiveness ratings for topics. The system uses **GPU acceleration** to handle large datasets efficiently and offers both batch processing and real-time analysis through a gRPC server.
 
 ---
 
@@ -50,8 +50,8 @@ This system is divided into several components:
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-repository-url>
-   cd <your-repository>
+   git clone https://github.com/H4ck3rZ0n3/social-media-opinion-analysis.git
+   cd social-media-opinion-analysis
    ```
 
 2. **Install dependencies**:
@@ -69,9 +69,21 @@ This system is divided into several components:
 
 4. **Run the application**:
    ```bash
-   python main.py
+   python src/main.py
    ```
+5. **Docker Setup (Optional)**:
+   - Make sure **Docker** is installed and the **NVIDIA container toolkit** is properly configured. 
+     You can follow the [NVIDIA Docker setup guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to install it.
+   
+   - Build the Docker image:
+     ```bash
+     docker build -t social-media-analyzer-image .
+     ```
 
+   - Run the Docker container with GPU access:
+     ```bash
+     docker run --gpus all --name social-media-analyzer-container social-media-analyzer-image
+     ```
 ---
 
 ## Usage
@@ -95,11 +107,14 @@ This system is divided into several components:
         └── opinions.csv
 /src
     └── grpc_server.py
-    └──comment_classifier.py
-    └──conclusion_generator.py
-    └──opinion_analyzer.py
-    └──topic_similarity_calculator.py
-    └──main.py
+    └── comment_classifier.py
+    └── conclusion_generator.py
+    └── gpu_resource_manager
+    └── opinion_analyzer.py
+    └── text_preprocessor
+    └── topic_similarity_calculator.py
+    └── topic_effectiveness_classifier
+    └── main.py
 /src/outputs
         └── (Generated CSV files will be saved here)
 
