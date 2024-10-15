@@ -10,8 +10,16 @@ RUN pip3 install \
     pip3 install datasets emoji nltk sentence_transformers
 
 # Copying the data and src folders to the Docker image
+COPY proto/ /app/proto/
 COPY data/ /app/data/
 COPY src/ /app/src/
+
+# Building Protobuf files
+RUN python3 -m grpc_tools.protoc \
+    -I./proto \
+    --python_out=./src/ \
+    --grpc_python_out=./src/ \
+    ./proto/opinion_analyzer.proto
 
 # Setting the working directory
 WORKDIR /app/src/

@@ -60,18 +60,28 @@ This system is divided into several components:
      ```bash
      pip install -r requirements.txt
      ```
+     
+3. **Build proto files**:
+   - Step to compile the .proto files:
+     ```bash
+     python3 -m grpc_tools.protoc \
+     -I./proto \
+     --python_out=./src/ \
+     --grpc_python_out=./src/ \
+     ./proto/opinion_analyzer.proto
+     ```
 
-3. **Prepare your environment**:
+4. **Prepare your environment**:
    - Ensure that a **GPU** with CUDA support is available.
    - Set up the necessary data files in `data/train/`:
      - `topics.csv`
      - `opinions.csv`
 
-4. **Run the application**:
+5. **Run the application**:
    ```bash
    python src/main.py
    ```
-5. **Docker Setup (Optional)**:
+6. **Docker Setup (Optional)**:
    - Make sure **Docker** is installed and the **NVIDIA container toolkit** is properly configured. 
      You can follow the [NVIDIA Docker setup guide](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) to install it.
    
@@ -142,6 +152,15 @@ README.md
 ---
 
 ## Example Output
+
+Example classification of a opinion:
+
+```
+Opinion: Good Climate Change
+Topic: Climate Change
+Type: Claim
+```
+
 Example summary of a topic:
 
 ```
