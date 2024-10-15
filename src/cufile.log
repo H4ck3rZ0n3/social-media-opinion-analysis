@@ -20,3 +20,5 @@
  15-10-2024 20:25:33:889 [pid=71647 tid=71647] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/vda2
  15-10-2024 23:43:48:168 [pid=118850 tid=118850] NOTICE  cufio-drv:727 running in compatible mode
  15-10-2024 23:43:48:407 [pid=118850 tid=118850] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/vda2
+ 16-10-2024 00:28:15:283 [pid=130877 tid=130877] NOTICE  cufio-drv:720 running in compatible mode
+ 16-10-2024 00:28:15:529 [pid=130877 tid=130877] ERROR  cufio-fs:79 mount option not found in mount table data device: /dev/vda2

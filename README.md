@@ -1,6 +1,8 @@
 
 # Social Media Opinion Analysis Project
 
+<img src="./images/logo.png" alt="Social Media Opinion Analysis" width="600" height="350">
+
 This project aims to analyze and classify social media comments into specific categories (Claim, Counterclaim, Rebuttal, Evidence) and generate summaries and effectiveness ratings for topics. The system uses **GPU acceleration** to handle large datasets efficiently and offers both batch processing and real-time analysis through a gRPC server.
 
 ---
@@ -79,7 +81,8 @@ This system is divided into several components:
 
 5. **Run the application**:
    ```bash
-   python src/main.py
+   cd src
+   python main.py
    ```
 6. **Docker Setup (Optional)**:
    - Make sure **Docker** is installed and the **NVIDIA container toolkit** is properly configured. 

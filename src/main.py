@@ -3,7 +3,7 @@
 import logging
 
 from opinion_analyzer import OpinionAnalyzer
-from src.grpc_server import GRPCServer
+from grpc_server import GRPCServer
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
