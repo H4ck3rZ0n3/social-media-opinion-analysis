@@ -107,8 +107,14 @@ This system is divided into several components:
 - When prompted, select **Option 1** to analyze the CSV files.
 - The results will be saved in the `src/outputs/` directory.
 
-### 2. Starting the gRPC Server
-- Select **Option 2** from the main menu to start the gRPC server.
+### 2. Test CSV Analysis (Currently Unavailable)
+- Place your data in the `data/test/` directory.
+- When prompted, select **Option 2** to compare the CSV files.
+- The results will be saved in the `src/outputs/` directory.
+
+
+### 3. Starting the gRPC Server
+- Select **Option 3** from the main menu to start the gRPC server.
 - The server will run and be ready to receive real-time comment and topic data.
 
 ---
