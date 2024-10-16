@@ -57,7 +57,7 @@ class ConclusionGenerator:
             )
 
             batch_summaries = [
-                self.tokenizer.decode(g, skip_special_tokens=True)
+                self.tokenizer.decode(g, skip_special_tokens=True).replace('"', "`")
                 for g in summary_ids
             ]
             summaries.extend(batch_summaries)

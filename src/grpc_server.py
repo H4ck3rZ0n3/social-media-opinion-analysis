@@ -12,11 +12,25 @@ class OpinionAnalyzerServicer(opinion_analyzer_pb2_grpc.OpinionAnalyzerServiceSe
         self.analyzer = analyzer
 
     def AnalyzeOpinion(self, request, context):
-        topics = request.topics
-        opinions = request.opinions
+        topics = list(request.topics)
+        opinions = list(request.opinions)
         logging.info(f"Received gRPC request: Topics='{topics}', Opinions='{opinions}'")
-        result = self.analyzer.analyze_grpc(topics, opinions)
-        return opinion_analyzer_pb2.AnalyzeResponse(analysis_result=result)
+
+        opinions_result, topics_result = self.analyzer.analyze_grpc(topics, opinions)
+
+        opinion_messages = [
+            opinion_analyzer_pb2.Opinion(text=text, topic=topic, type=op_type)
+            for text, topic, op_type in opinions_result
+        ]
+
+        topic_messages = [
+            opinion_analyzer_pb2.Topic(topic_name=topic, summary=summary, effectiveness=effectiveness)
+            for topic, summary, effectiveness in topics_result
+        ]
+
+        response = opinion_analyzer_pb2.AnalyzeResponse(opinions=opinion_messages, topics=topic_messages)
+
+        return response
 
 class GRPCServer:
     def __init__(self, host: str = '[::]:50051'):
