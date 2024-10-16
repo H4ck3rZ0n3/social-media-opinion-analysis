@@ -9,7 +9,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
     analyzer = OpinionAnalyzer()
 
-    user_input = input("Select an option:\n1 - Process CSV files\n2 - Test CSV files\n2 - Start gRPC Server\nEnter: ").strip()
+    user_input = input("Select an option:\n1 - Process CSV files\n2 - Test CSV files\n3 - Start gRPC Server\nEnter: ").strip()
 
     if user_input == '1':
         topic_path = '../data/train/topics.csv'
